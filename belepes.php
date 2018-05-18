@@ -1,3 +1,7 @@
+<?php
+// Munkamenet indítása
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,6 +9,7 @@
         <title>Belépés</title>
     </head>
     <body>
+        <?php require 'menu.php'; ?>
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST['email'])) {
@@ -26,7 +31,9 @@
                     //jelszó ellenőrzése
                     if (password_verify($_POST['jelszo'], $row['jelszo'])) {
                         //helyes jelszó
-                        echo 'Sikeres belépés!';
+                        //echo 'Sikeres belépés!';
+                        $_SESSION['belepett'] = true;
+                        header('Location: index.php');
                     } else {
                         //hibás jelszó
                         echo 'Hibás email vagy jelszó!';

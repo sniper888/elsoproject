@@ -5,6 +5,7 @@
         <title>Regisztráció</title>
     </head>
     <body>
+        <?php require 'menu.php'; ?>
         <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (empty($_POST['nev'])) {
@@ -29,6 +30,7 @@ VALUES ('" . $_POST['nev'] . "', '" . $_POST['email'] . "', '" . $jelszo . "')";
             }
         }
         ?>
+        <h1>Regisztráció:</h1>
         <form method="post">
             Név: <input type="text" name="nev"><br>
             E-mail: <input type="email" name="email"><br>
